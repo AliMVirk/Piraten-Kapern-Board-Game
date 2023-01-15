@@ -1,7 +1,7 @@
 # A1 - Piraten Karpen
 
-  * Author: < You name here >
-  * Email: < Your email here >
+  * Author: Ali Virk
+  * Email: virka9@mcmaster.ca
 
 ## Build and Execution
 
@@ -27,13 +27,13 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 
 ### Backlog 
 
-| MVP? | Id  | Feature  | Status  |  Started  | Delivered |
-| :-:  |:-:  |---       | :-:     | :-:       | :-:       |
-| x   | F01 | Roll a dice |  S | 01/01/23 |  |
-| x   | F02 | Roll eight dices  |  B (F01) |   |
-| x   | F03 | Select how many games as command-line arg.  |  P  |   |
-| x   | F04 | end of game with three cranes | P | |
-| x   | F05 | Player keeping random dice at their turn | B (F02) | | 
-| x   | F06 | Score points: 3-of-a-kind | B (F04) | | 
-| ... | ... | ... |
+| MVP? | Id  | Feature                                    | Status  | Started  | Delivered |
+|------|-----|--------------------------------------------|---------|----------|-----------|
+| x    | F01 | Roll a dice                                | S       | 01/01/23 |           |
+| x    | F02 | Roll eight dices                           | B (F01) |          |
+| x    | F03 | Select how many games as command-line arg. | P       |          |
+| x    | F04 | end of game with three cranes              | P       |          |
+| x    | F05 | Player keeping random dice at their turn   | B (F02) |          | 
+| x    | F06 | Score points: 3-of-a-kind                  | B (F04) |          | 
+| ...  | ... | ...                                        |
 
