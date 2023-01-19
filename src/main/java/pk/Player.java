@@ -18,4 +18,13 @@ public class Player {
         }
     }
 
+    public int countSkulls() {
+        int numSkulls = 0;
+        for (Faces die : rollResult) {
+            if (die == Faces.SKULL)
+                numSkulls++;
+        }
+        return numSkulls;
+    }
+
 }
