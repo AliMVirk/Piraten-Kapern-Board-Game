@@ -29,8 +29,8 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 
 | MVP? | Id  | Feature                                       | Status  | Started  | Delivered |
 |------|-----|-----------------------------------------------|---------|----------|-----------|
-| x    | F01 | Roll a dice                                   | S       | 01/01/23 |           |
-| x    | F02 | Roll eight dices                              | B (F01) |          |
+| x    | F01 | Roll a dice                                   | D       | 01/01/23 |           |
+| x    | F02 | Roll eight dices                              | D       | 01/18/23 |
 | x    | F03 | End of turn with three skulls                 | P       |          |
 | x    | F04 | Player keeping random dice at their turn      | B (F02) |          |
 | x    | F05 | Score points: counting gold and diamond       | B (F03) |          | 
