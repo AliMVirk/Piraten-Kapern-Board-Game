@@ -27,9 +27,9 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 
 ### Backlog 
 
-| MVP? | Id  | Feature                                       | Status  | Started  | Delivered |
-|------|-----|-----------------------------------------------|---------|----------|-----------|
-| x    | F01 | Roll eight dices                              | P       | 01/18/23 |
+| MVP? | Id  | Feature                                       | Status  | Started  | Delivered  |
+|------|-----|-----------------------------------------------|---------|----------|------------|
+| x    | F01 | Roll eight dices                              | D       | 01/18/23 | 01/18/23   |
 | x    | F02 | End of turn with three skulls                 | P       |          |
 | x    | F03 | Player keeping random dice at their turn      | B (F01) |          |
 | x    | F04 | Score points: counting gold and diamond       | P       |          | 
