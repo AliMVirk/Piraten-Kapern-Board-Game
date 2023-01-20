@@ -7,6 +7,7 @@ public class Game {
 
     public void turn(Player p) {
         int keepDice = 0;
+        p.resetDice();
         while (p.countSkulls() < 3 && keepDice < 7) {
             keepDice = p.rollRemaining(keepDice);
 
@@ -21,9 +22,13 @@ public class Game {
     }
 
     public void playGame() {
-        turn(p1);
-        System.out.println("NEXT PLAYER");
-        turn(p2);
+        while (true) {
+            turn(p1);
+            System.out.println("NEXT PLAYER");
+            turn(p2);
+            if (p1.totalPoints >= 6000 || p2.totalPoints >= 6000)
+                break;
+        }
     }
 
 

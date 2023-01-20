@@ -40,4 +40,8 @@ public class Player {
         }
     }
 
+    public void resetDice() {
+        for (int i = 0; i < 8; i++)
+            rollResult[i] = null;
+    }
 }
