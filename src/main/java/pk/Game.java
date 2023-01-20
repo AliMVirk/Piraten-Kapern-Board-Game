@@ -15,11 +15,14 @@ public class Game {
                 System.out.print(p.rollResult[j] + " ");   //print roll results
             System.out.println();
         }
+        if (p.countSkulls() < 3)
+            p.updatePoints();
+        System.out.println(p.totalPoints);
     }
 
     public void playGame() {
         turn(p1);
-        System.out.println();
+        System.out.println("NEXT PLAYER");
         turn(p2);
     }
 

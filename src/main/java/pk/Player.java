@@ -5,6 +5,7 @@ public class Player {
 
     public Dice[] diceSet = new Dice[8];
     public Faces[] rollResult = new Faces[8];
+    public int totalPoints = 0;
     public Player() {
         for (int i = 0; i < 8; i++)
             diceSet[i] = new Dice();
@@ -25,11 +26,18 @@ public class Player {
 
     public int countSkulls() {
         int numSkulls = 0;
-        for (Faces die : rollResult) {
-            if (die == Faces.SKULL)
+        for (Faces dieResult : rollResult) {
+            if (dieResult == Faces.SKULL)
                 numSkulls++;
         }
         return numSkulls;
+    }
+
+    public void updatePoints() {
+        for (Faces dieResult : rollResult) {
+            if (dieResult == Faces.GOLD || dieResult == Faces.DIAMOND)
+                totalPoints += 100;
+        }
     }
 
 }

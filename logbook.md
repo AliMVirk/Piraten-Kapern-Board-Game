@@ -4,4 +4,4 @@
 | 01/16/23 | Edited README to reflect business logic in step 2   |
 | 01/18/23 | Implemented F01                                     |
 | 01/19/23 | Delivered F01 and F02 and implemented F03           |
-| 01/20/23 | Delivered F03                                       |
+| 01/20/23 | Delivered F03 and F04                               |
