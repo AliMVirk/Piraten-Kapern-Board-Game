@@ -31,7 +31,7 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |------|-----|-----------------------------------------------|---------|----------|-----------|
 | x    | F01 | Roll eight dices                              | D       | 01/18/23 | 01/18/23  |
 | x    | F02 | End of turn with three skulls                 | D       | 01/19/23 | 01/19/23  |
-| x    | F03 | Player keeping random dice at their turn      | B (F01) |          |           |
+| x    | F03 | Player keeping random dice at their turn      | D       | 01/19/23 | 01/20/23  |
 | x    | F04 | Score points: counting gold and diamond       | P       |          |           |
 | x    | F05 | End of game when a player reaches 6000 points | B (F04) |          |           |
 |      | F06 | Play 42 games                                 | B (F05) |          |           |

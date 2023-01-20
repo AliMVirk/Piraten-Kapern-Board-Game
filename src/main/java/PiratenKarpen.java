@@ -9,6 +9,7 @@ public class PiratenKarpen {
         System.out.println("Welcome to Piraten Karpen Simulator!");
 
         Game play = new Game();
+        play.playGame();
 
         System.out.println("That's all folks!");
     }
