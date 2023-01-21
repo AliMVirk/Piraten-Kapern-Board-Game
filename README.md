@@ -35,5 +35,5 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 | x    | F04 | Score points: counting gold and diamond       | D      | 01/20/23 | 01/20/23  |
 | x    | F05 | End of game when a player reaches 6000 points | D      | 01/20/23 | 01/20/23  |
 |      | F06 | Play 42 games                                 | D      | 01/21/23 | 01/21/23  |
-|      | F07 | Display win percentage of each player         | P      |          |           |
+|      | F07 | Display win percentage of each player         | D      | 01/21/23 | 01/21/23  |
 

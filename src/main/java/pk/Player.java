@@ -6,6 +6,8 @@ public class Player {
     public Dice[] diceSet = new Dice[8];
     public Faces[] rollResult = new Faces[8];
     public int totalPoints = 0;
+    public int totalWins = 0;
+
     public Player() {
         for (int i = 0; i < 8; i++)
             diceSet[i] = new Dice();
