@@ -26,8 +26,10 @@ public class Game {
             turn(p1);
             System.out.println("NEXT PLAYER");
             turn(p2);
-            if (p1.totalPoints >= 6000 || p2.totalPoints >= 6000)
+            if (p1.totalPoints >= 6000 || p2.totalPoints >= 6000) {
+                p1.resetPoints(); p2.resetPoints();
                 break;
+            }
         }
     }
 

@@ -17,11 +17,17 @@ public class Player {
         keepDice += diceKept;
         int i, j; i = j = 0; // i represents counter over dice set and j represents counter over dice to keep
         for (Dice die : diceSet) {
-            if (rollResult[i] != Faces.SKULL && (j >= keepDice || rollResult[i] == null))
-                rollResult[i] = die.roll();
-            i++; j++;
+            if (rollResult[i] != Faces.SKULL) {
+                if (j >= keepDice || rollResult[i] == null)
+                    rollResult[i] = die.roll();
+                j++;
+            }
+            i++;
         }
-        return keepDice;
+        if (j <= keepDice)
+                return 8;
+        else
+            return keepDice;
     }
 
     public int countSkulls() {
@@ -43,5 +49,9 @@ public class Player {
     public void resetDice() {
         for (int i = 0; i < 8; i++)
             rollResult[i] = null;
+    }
+
+    public void resetPoints() {
+        totalPoints = 0;
     }
 }

@@ -5,3 +5,4 @@
 | 01/18/23 | Implemented F01                                     |
 | 01/19/23 | Delivered F01 and F02 and implemented F03           |
 | 01/20/23 | Delivered F03, F04, and F05                         |
+| 01/21/23 | Updated F03 and delivered F06                       |
