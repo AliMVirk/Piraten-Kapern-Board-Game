@@ -8,3 +8,4 @@
 | 01/21/23 | Updated F03, delivered F06 and F07; finished MVP                                   |
 | 01/22/23 | Allowed for tracing messages in a log file and implemented an optional trace mode  |
 | 01/23/23 | Updated backlog to reflect business logic in step 4 and added new scoring strategy |
+| 01/23/23 | Refined new scoring strategy. Created a method to count faces                      |

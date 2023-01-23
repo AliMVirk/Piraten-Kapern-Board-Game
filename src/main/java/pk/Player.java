@@ -45,30 +45,37 @@ public class Player {
         return numSkulls;
     }
 
-    public void updatePoints() {
+    public int[] countFaces() {
         int[] faceCounter = new int[] {0, 0, 0, 0, 0};
         for (Faces dieResult : rollResult) {
-            if (dieResult == Faces.GOLD || dieResult == Faces.DIAMOND)
-                totalPoints += 100;
             for (int i = 0; i < 5; i++) {
                 if (dieResult == Faces.values()[i])
                     faceCounter[i]++;
             }
         }
-        for (int group : faceCounter) {
-            if (group == 8)
-                totalPoints += 4000;
-            else if (group == 7)
-                totalPoints += 2000;
-            else if (group == 6)
-                totalPoints += 1000;
-            else if (group == 5)
-                totalPoints += 500;
-            else if (group == 4)
-                totalPoints += 200;
-            else if (group == 3)
-                totalPoints += 100;
+        return faceCounter;
+    }
+
+    public void updatePoints() {
+        int[] numFaces = countFaces();
+        totalPoints += (numFaces[2] + numFaces[3]) * 100;
+        for (int group : numFaces) {
+            switch (group) {
+                case 8:
+                    totalPoints += 4000;
+                case 7:
+                    totalPoints += 2000;
+                case 6:
+                    totalPoints += 1000;
+                case 5:
+                    totalPoints += 500;
+                case 4:
+                    totalPoints += 200;
+                case 3:
+                    totalPoints += 100;
+            }
         }
+        logger.trace("(DEBUG) " + Arrays.toString(numFaces));
     }
 
     public void resetDice() {
