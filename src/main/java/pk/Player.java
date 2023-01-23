@@ -52,8 +52,5 @@ public class Player {
         for (int i = 0; i < 8; i++)
             rollResult[i] = null;
     }
-
-    public void resetPoints() {
-        totalPoints = 0;
-    }
+    
 }
