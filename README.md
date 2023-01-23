@@ -15,8 +15,10 @@
     * `mvn package`
   * To run the packaged delivery:
     * `java -jar target/piraten-karpen-jar-with-dependencies.jar`
-  * To run the program in trace mode:
+  * To run the project in trace mode:
     * `mvn -q exec:java -Dexec.args="log"`
+  * To run the packaged delivery in trace mode:
+    * `java -jar target/piraten-karpen-jar-with-dependencies.jar log`
 
 Remark: **We are assuming here you are using a _real_ shell (e.g., anything but PowerShell on Windows)**
 
