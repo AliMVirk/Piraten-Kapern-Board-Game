@@ -13,7 +13,7 @@ public class Game {
     public void turn(Player p) {
         int keepDice = 0;
         p.resetDice();
-        while (p.countSkulls() < 3 && keepDice < 7) {
+        while (p.countSkulls() < 3 && keepDice < 8) {
             keepDice = p.rollRemaining(keepDice);
             if (trace) {
                 logger.trace("Player kept " + keepDice + " dice"); // irrelevant on very first roll
