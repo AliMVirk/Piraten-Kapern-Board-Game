@@ -29,22 +29,22 @@ public class Game {
             if (trace)
                 logger.trace("NEW TURN: Player 1");
             turn(p1);
-            if (trace) {
+            if (trace)
                 logger.trace("Player 1 has " + p1.totalPoints + " points");
+            if (p2.totalPoints >= 6000)
+                break;
+            if (trace)
                 logger.trace("NEW TURN: Player 2");
-            }
             turn(p2);
             if (trace)
                 logger.trace("Player 2 has " + p2.totalPoints + " points");
-            if (p1.totalPoints >= 6000 || p2.totalPoints >= 6000) {
-                if (p1.totalPoints > p2.totalPoints)
-                    p1.totalWins++;
-                else if (p2.totalPoints > p1.totalPoints)
-                    p2.totalWins++;
-                p1.totalPoints = p2.totalPoints = 0;
+            if (p1.totalPoints >= 6000)
                 break;
             }
+        if (p1.totalPoints > p2.totalPoints)
+            p1.totalWins++;
+        else if (p2.totalPoints > p1.totalPoints)
+            p2.totalWins++;
+        p1.totalPoints = p2.totalPoints = 0;
         }
-    }
-
 }
