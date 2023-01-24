@@ -9,3 +9,4 @@
 | 01/22/23 | Allowed for tracing messages in a log file and implemented an optional trace mode  |
 | 01/23/23 | Updated backlog to reflect business logic in step 4 and added new scoring strategy |
 | 01/23/23 | Refined new scoring strategy. Created a method to count faces                      |
+| 01/24/23 | Implemented new player strategy to maximize combos and toggle between strategies   |

@@ -5,8 +5,14 @@ public class PiratenKarpen {
     public static void main(String[] args) {
         System.out.println("Welcome to Piraten Karpen Simulator!");
 
-        Game play42 = new Game();
-        if (args.length > 0 && args[0].equals("log"))
+        Game play42;
+        try {
+            play42 = new Game(args[0], args[1]);
+        } catch (Exception IndexOutOfBoundsException) {
+            return;
+        }
+
+        if (args.length > 0 && args[args.length - 1].equals("log"))
             play42.trace = true;
         for (int i = 0; i < 42; i++)
             play42.playGame();

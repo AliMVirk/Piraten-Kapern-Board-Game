@@ -1,8 +1,5 @@
 package pk;
-import java.util.Arrays;
 import java.util.Random;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Player {
 
@@ -10,11 +7,12 @@ public class Player {
     public Faces[] rollResult = new Faces[8];
     public int totalPoints = 0;
     public int totalWins = 0;
-    private static final Logger logger = LogManager.getLogger(Player.class); // to debug
+    public String strategy;
 
-    public Player() {
+    public Player(String ai) {
         for (int i = 0; i < 8; i++)
             diceSet[i] = new Dice();
+        strategy = ai;
     }
 
     public int rollRemaining(int diceKept) {
@@ -34,6 +32,32 @@ public class Player {
             return 8;
         else
             return keepDice;
+    }
+
+    public int rollCombo() {
+        Faces priority = findMaxFace();
+        int keepDice = 0;
+        for (int i = 0; i < 8; i++) {
+            if (rollResult[i] != Faces.SKULL) {
+                if (rollResult[i] != priority && countSkulls() < 2 || rollResult[i] == null)
+                    rollResult[i] = diceSet[i].roll();
+                else
+                    keepDice++;
+            }
+        }
+        return keepDice;
+    }
+
+    public Faces findMaxFace() {
+        int[] numFaces = countFaces();
+        int max = 0; Faces maxFace = null;
+        for (int i = 0; i < 5; i++) {
+            if (numFaces[i] > max) {
+                max = numFaces[i];
+                maxFace = Faces.values()[i];
+            }
+        }
+        return maxFace;
     }
 
     public int countSkulls() {
@@ -63,19 +87,24 @@ public class Player {
             switch (group) {
                 case 8:
                     totalPoints += 4000;
+                    break;
                 case 7:
                     totalPoints += 2000;
+                    break;
                 case 6:
                     totalPoints += 1000;
+                    break;
                 case 5:
                     totalPoints += 500;
+                    break;
                 case 4:
                     totalPoints += 200;
+                    break;
                 case 3:
                     totalPoints += 100;
+                    break;
             }
         }
-        logger.trace("(DEBUG) " + Arrays.toString(numFaces));
     }
 
     public void resetDice() {

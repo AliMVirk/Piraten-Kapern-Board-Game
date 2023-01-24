@@ -6,19 +6,33 @@ import java.util.Arrays;
 public class Game {
 
     private static final Logger logger = LogManager.getLogger(Game.class);
-    public Player p1 = new Player();
-    public Player p2 = new Player();
+    public Player p1;
+    public Player p2;
     public boolean trace = false;
+
+    public Game(String p1Strat, String p2Strat) {
+        p1 = new Player(p1Strat);
+        p2 = new Player(p2Strat);
+    }
 
     public void turn(Player p) {
         int keepDice = 0;
         p.resetDice();
         while (p.countSkulls() < 3 && keepDice < 8) {
-            keepDice = p.rollRemaining(keepDice);
-            if (trace) {
-                logger.trace("Player kept " + keepDice + " dice"); // irrelevant on very first roll
-                logger.trace(Arrays.toString(p.rollResult));
-            }
+            if (p.strategy.equals("random")) {
+                keepDice = p.rollRemaining(keepDice);
+                if (trace) {
+                    logger.trace("Player kept " + keepDice + " dice excluding skulls"); // irrelevant on very first roll
+                    logger.trace(Arrays.toString(p.rollResult));
+                }
+            } else if (p.strategy.equals("combo")) {
+                keepDice = p.rollCombo() + p.countSkulls();
+                if (trace) {
+                    logger.trace("Player kept " + (keepDice - p.countSkulls()) + " dice excluding skulls");
+                    logger.trace(Arrays.toString(p.rollResult));
+                }
+            } else
+                System.exit(1);
         }
         if (p.countSkulls() < 3)
             p.updatePoints();
