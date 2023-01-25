@@ -43,7 +43,3 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |      | F08 | Player rerolls based on prioritizing combinations of dice                           | D      | 01/23/23 | 01/24/23  |
 |      | F09 | Player strategies are passed in as command line arguments                           | D      | 01/24/23 | 01/24/23  |
 
-### Comparison between F04 and F08 in terms of business value: 
-
-Currently, F04 should have more priority because introducing a new way to score points affects the consumer more than refining the AI for the player. This is because the CPU player's difficulty doesn't matter to the consumer if the game is entirely autonomous. However, F08 should have more priority if the goal of the game is to have the user play against the CPU.
-
