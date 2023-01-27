@@ -8,6 +8,7 @@ public class Player {
     public int totalPoints = 0;
     public int totalWins = 0;
     public String strategy;
+    public Card playerCard;
 
     public Player(String ai) {
         for (int i = 0; i < 8; i++)
@@ -26,7 +27,7 @@ public class Player {
                     diceToKeep--;
             }
         }
-        Game.logger.trace("Player rolled " + diceToRoll.size() + " dice");
+        //Game.logger.trace("Player rolled " + diceToRoll.size() + " dice"); for debugging
         if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
             return false;
         rollDice(diceToRoll);

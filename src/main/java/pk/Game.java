@@ -9,6 +9,7 @@ public class Game {
     public Player p1;
     public Player p2;
     public boolean trace = false;
+    public Deck deck = new Deck();
 
     public Game(String p1Strat, String p2Strat) {
         p1 = new Player(p1Strat);
@@ -18,6 +19,12 @@ public class Game {
     public void turn(Player p) {
         boolean keepRolling = true;
         p.resetDice();
+        p.playerCard = deck.draw();
+        if (trace) {
+            logger.trace("Player drew card " + p.playerCard);
+            logger.trace("(DEBUG) " + Arrays.toString(deck.cards));
+        }
+        
         while (p.countSkulls() < 3 && keepRolling) {
             if (p.strategy.equals("random"))
                 keepRolling = p.rollRandom();
