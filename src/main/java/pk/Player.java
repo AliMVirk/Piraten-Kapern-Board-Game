@@ -1,5 +1,5 @@
 package pk;
-import java.util.Random;
+import java.util.ArrayList;
 
 public class Player {
 
@@ -15,37 +15,44 @@ public class Player {
         strategy = ai;
     }
 
-    public int rollRemaining(int diceKept) {
-        Random bag = new Random();
-        int keepDice = (diceKept == 8) ? 0 : bag.nextInt(8 - diceKept);
-        keepDice += diceKept;
-        int i, j; i = j = 0; // i represents counter over dice set and j represents counter over dice to keep
-        for (Dice die : diceSet) {
+    public boolean rollRandom() {
+        int diceToKeep = (int) (Math.random() * 8) + 1 - countSkulls();
+        ArrayList<Integer> diceToRoll = new ArrayList<Integer>();
+        for (int i = 0; i < 8; i++) {
             if (rollResult[i] != Faces.SKULL) {
-                if (j >= keepDice || rollResult[i] == null)
-                    rollResult[i] = die.roll();
-                j++;
+                if (diceToKeep == 0 || rollResult[i] == null)
+                    diceToRoll.add(i);
+                else
+                    diceToKeep--;
             }
-            i++;
         }
-        if (j <= keepDice)
-            return 8;
-        else
-            return keepDice;
+        Game.logger.trace("Player rolled " + diceToRoll.size() + " dice");
+        if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
+            return false;
+        rollDice(diceToRoll);
+        return true;
     }
 
-    public int rollCombo() {
+    public boolean rollCombo() {
         Faces priority = findMaxFace();
-        int keepDice = 0;
+        ArrayList<Integer> diceToRoll = new ArrayList<Integer>();
         for (int i = 0; i < 8; i++) {
             if (rollResult[i] != Faces.SKULL) {
                 if (rollResult[i] != priority && countSkulls() < 2 || rollResult[i] == null)
-                    rollResult[i] = diceSet[i].roll();
-                else
-                    keepDice++;
+                    diceToRoll.add(i);
             }
         }
-        return keepDice;
+        Game.logger.trace("(DEBUG) Player rolled " + diceToRoll.size() + " dice");
+        if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
+            return false;
+        rollDice(diceToRoll);
+        return true;
+    }
+
+    public void rollDice(ArrayList<Integer> diceToRoll) {
+        for (int pos : diceToRoll) {
+            rollResult[pos] = diceSet[pos].roll();
+        }
     }
 
     public Faces findMaxFace() {
