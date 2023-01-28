@@ -17,16 +17,18 @@ import java.util.Random;
 
 public class Deck {
 
-    public Card[] cards = new Card[35];
-    int top = 0;
+    public String[] cards = new String[35];
+    int top = 35;
     
     public Deck() {
-        cards[0] = new Card("SB2");
-        cards[1] = new Card("SB2");
-        cards[2] = new Card("SB3");
-        cards[3] = new Card("SB3");
-        cards[4] = new Card("SB4");
-        cards[5] = new Card("SB4");
+        cards[0] = "SB2";
+        cards[1] = "SB2";
+        cards[2] = "SB3";
+        cards[3] = "SB3";
+        cards[4] = "SB4";
+        cards[5] = "SB4";
+        for (int i = 6; i < 35; i++)
+            cards[i] = "nop";
     }
 
     public Card draw() {
