@@ -21,13 +21,11 @@ public class Deck {
     int top = 35;
     
     public Deck() {
-        cards[0] = "SB2";
-        cards[1] = "SB2";
-        cards[2] = "SB3";
-        cards[3] = "SB3";
-        cards[4] = "SB4";
-        cards[5] = "SB4";
-        for (int i = 6; i < 35; i++)
+        cards[0] = cards[1] = "SB2";
+        cards[2] = cards[3] = "SB3";
+        cards[4] = cards[5] = "SB4";
+        cards[6] = cards[7] = cards[8] = cards[9] = "MB";
+        for (int i = 10; i < 35; i++)
             cards[i] = "nop";
     }
 

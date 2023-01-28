@@ -30,11 +30,11 @@ public class Player {
         return rollDice(diceToRoll);
     }
 
-    public boolean rollCombo() {
+    public boolean rollCombo(String card) {
         Faces priority = findMaxFace();
         ArrayList<Integer> diceToRoll = new ArrayList<Integer>();
         for (int i = 0; i < 8; i++) {
-            if (rollResult[i] != Faces.SKULL && rollResult[i] != priority && countSkulls() < 2 || rollResult[i] == null)
+            if (rollResult[i] != Faces.SKULL && countSkulls() < 2 && (rollResult[i] != priority && !card.equals("MB") || rollResult[i] == null || card.equals("MB") && rollResult[i] != Faces.MONKEY && rollResult[i] != Faces.PARROT))
                 diceToRoll.add(i);
         }
         return rollDice(diceToRoll);
@@ -98,29 +98,38 @@ public class Player {
             rollResult[i] = null;
     }
 
-    public void updatePoints() {
+    public void updatePoints(String card) {
         int[] numFaces = countFaces();
-        totalPoints += (numFaces[2] + numFaces[3]) * 100;
-        for (int group : numFaces) {
-            switch (group) {
-                case 8:
-                    totalPoints += 4000;
-                    break;
-                case 7:
-                    totalPoints += 2000;
-                    break;
-                case 6:
-                    totalPoints += 1000;
-                    break;
-                case 5:
-                    totalPoints += 500;
-                    break;
-                case 4:
-                    totalPoints += 200;
-                    break;
-                case 3:
-                    totalPoints += 100;
-                    break;
+        if (card.equals("SB")) {
+            if (!seaBattleResult())
+                return;
+        } else if (card.equals("MB")) {
+            numFaces[0] += numFaces[1];
+            numFaces[1] = 0;
+        }
+        if (countSkulls() < 3) {
+            totalPoints += (numFaces[2] + numFaces[3]) * 100;
+            for (int group : numFaces) {
+                switch (group) {
+                    case 8:
+                        totalPoints += 4000;
+                        break;
+                    case 7:
+                        totalPoints += 2000;
+                        break;
+                    case 6:
+                        totalPoints += 1000;
+                        break;
+                    case 5:
+                        totalPoints += 500;
+                        break;
+                    case 4:
+                        totalPoints += 200;
+                        break;
+                    case 3:
+                        totalPoints += 100;
+                        break;
+                }
             }
         }
     }

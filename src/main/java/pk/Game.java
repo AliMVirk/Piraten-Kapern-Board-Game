@@ -30,17 +30,13 @@ public class Game {
             else if (p.strategy.equals("random"))
                 keepRolling = p.rollRandom();
             else if (p.strategy.equals("combo"))
-                keepRolling = p.rollCombo();
+                keepRolling = p.rollCombo(cardType);
             else
                 System.exit(1);
             if (trace)
                 logger.trace(Arrays.toString(p.rollResult));
         }
-        if (cardType.equals("SB")) {
-            if (p.seaBattleResult())
-                p.updatePoints();
-        } else if (p.countSkulls() < 3)
-            p.updatePoints();
+        p.updatePoints(cardType);
     }
 
     public void playGame() {
