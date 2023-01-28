@@ -27,10 +27,7 @@ public class Player {
                     diceToKeep--;
             }
         }
-        if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
-            return false;
-        rollDice(diceToRoll);
-        return true;
+        return rollDice(diceToRoll);
     }
 
     public boolean rollCombo() {
@@ -40,16 +37,15 @@ public class Player {
             if (rollResult[i] != Faces.SKULL && rollResult[i] != priority && countSkulls() < 2 || rollResult[i] == null)
                 diceToRoll.add(i);
         }
-        if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
-            return false;
-        rollDice(diceToRoll);
-        return true;
+        return rollDice(diceToRoll);
     }
 
-    public void rollDice(ArrayList<Integer> diceToRoll) {
-        for (int pos : diceToRoll) {
+    public boolean rollDice(ArrayList<Integer> diceToRoll) {
+        if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
+            return false;
+        for (int pos : diceToRoll)
             rollResult[pos] = diceSet[pos].roll();
-        }
+        return true;
     }
 
     public boolean seaBattle() {
@@ -60,10 +56,9 @@ public class Player {
             if (rollResult[i] != Faces.SKULL && rollResult[i] != Faces.SABER)
                 diceToRoll.add(i);
         }
-        if (diceToRoll.size() == 0 || diceToRoll.size() == 1 || numSabers >= minSabers)
+        if (numSabers >= minSabers)
             return false;
-        rollDice(diceToRoll);
-        return true;
+        return rollDice(diceToRoll);
     }
 
     public Faces findMaxFace() {
