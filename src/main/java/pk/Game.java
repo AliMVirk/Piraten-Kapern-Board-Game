@@ -20,13 +20,14 @@ public class Game {
         boolean keepRolling = true;
         p.resetDice();
         p.playerCard = deck.draw();
-        if (trace) {
+        if (trace)
             logger.trace("Player drew card " + p.playerCard);
-            logger.trace("(DEBUG) " + Arrays.toString(deck.cards));
-        }
-        
+        String cardType = p.playerCard.substring(0, 2);
+
         while (p.countSkulls() < 3 && keepRolling) {
-            if (p.strategy.equals("random"))
+            if (cardType.equals("SB"))
+                keepRolling = p.seaBattle();
+            else if (p.strategy.equals("random"))
                 keepRolling = p.rollRandom();
             else if (p.strategy.equals("combo"))
                 keepRolling = p.rollCombo();
@@ -35,7 +36,10 @@ public class Game {
             if (trace)
                 logger.trace(Arrays.toString(p.rollResult));
         }
-        if (p.countSkulls() < 3)
+        if (cardType.equals("SB")) {
+            if (p.seaBattleResult())
+                p.updatePoints();
+        } else if (p.countSkulls() < 3)
             p.updatePoints();
     }
 

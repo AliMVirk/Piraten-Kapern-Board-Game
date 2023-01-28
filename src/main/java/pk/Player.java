@@ -8,7 +8,7 @@ public class Player {
     public int totalPoints = 0;
     public int totalWins = 0;
     public String strategy;
-    public Card playerCard;
+    public String playerCard;
 
     public Player(String ai) {
         for (int i = 0; i < 8; i++)
@@ -27,7 +27,6 @@ public class Player {
                     diceToKeep--;
             }
         }
-        //Game.logger.trace("Player rolled " + diceToRoll.size() + " dice"); for debugging
         if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
             return false;
         rollDice(diceToRoll);
@@ -38,12 +37,9 @@ public class Player {
         Faces priority = findMaxFace();
         ArrayList<Integer> diceToRoll = new ArrayList<Integer>();
         for (int i = 0; i < 8; i++) {
-            if (rollResult[i] != Faces.SKULL) {
-                if (rollResult[i] != priority && countSkulls() < 2 || rollResult[i] == null)
-                    diceToRoll.add(i);
-            }
+            if (rollResult[i] != Faces.SKULL && rollResult[i] != priority && countSkulls() < 2 || rollResult[i] == null)
+                diceToRoll.add(i);
         }
-        Game.logger.trace("(DEBUG) Player rolled " + diceToRoll.size() + " dice");
         if (diceToRoll.size() == 0 || diceToRoll.size() == 1)
             return false;
         rollDice(diceToRoll);
@@ -54,6 +50,20 @@ public class Player {
         for (int pos : diceToRoll) {
             rollResult[pos] = diceSet[pos].roll();
         }
+    }
+
+    public boolean seaBattle() {
+        ArrayList<Integer> diceToRoll = new ArrayList<Integer>();
+        int numSabers = countFaces()[4];
+        int minSabers = Character.getNumericValue(playerCard.charAt(2));
+        for (int i = 0; i < 8; i++) {
+            if (rollResult[i] != Faces.SKULL && rollResult[i] != Faces.SABER)
+                diceToRoll.add(i);
+        }
+        if (diceToRoll.size() == 0 || diceToRoll.size() == 1 || numSabers >= minSabers)
+            return false;
+        rollDice(diceToRoll);
+        return true;
     }
 
     public Faces findMaxFace() {
@@ -88,6 +98,11 @@ public class Player {
         return faceCounter;
     }
 
+    public void resetDice() {
+        for (int i = 0; i < 8; i++)
+            rollResult[i] = null;
+    }
+
     public void updatePoints() {
         int[] numFaces = countFaces();
         totalPoints += (numFaces[2] + numFaces[3]) * 100;
@@ -115,9 +130,38 @@ public class Player {
         }
     }
 
-    public void resetDice() {
-        for (int i = 0; i < 8; i++)
-            rollResult[i] = null;
+    public boolean seaBattleResult() {
+        int numSabers = countFaces()[4];
+        int minSabers = Character.getNumericValue(playerCard.charAt(2));
+        if (numSabers >= minSabers && countSkulls() < 3) {
+            switch (minSabers) {
+                case 4:
+                    totalPoints += 1000;
+                    break;
+                case 3:
+                    totalPoints += 500;
+                    break;
+                case 2:
+                    totalPoints += 300;
+                    break;
+            }
+            return true;
+        } else {
+            switch (minSabers) {
+                case 4:
+                    totalPoints -= 1000;
+                    break;
+                case 3:
+                    totalPoints -= 500;
+                    break;
+                case 2:
+                    totalPoints -= 300;
+                    break;
+            }
+            if (totalPoints < 0)
+                totalPoints = 0;
+            return false;
+        }
     }
     
 }

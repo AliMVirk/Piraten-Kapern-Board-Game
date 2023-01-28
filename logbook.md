@@ -12,4 +12,5 @@
 | 01/24/23 | Implemented new player strategy to maximize combos and toggle between strategies                                                 |
 | 01/25/23 | Caught up on report                                                                                                              |
 | 01/27/23 | Split rolling method from 2 strategy methods to 2 strategy methods and a general rolling method, changed random player behaviour |
-| 01/27/23 | Implemented rolling a minimum of 2 dice                                                                                          |
+| 01/27/23 | Implemented rolling a minimum of 2 dice, created Deck and Card class to implement fortune cards                                  |
+| 01/28/23 | Delivered remainder of step 5: implemented a sea battle with appropriate strategy and changes to points                          |

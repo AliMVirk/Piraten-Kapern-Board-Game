@@ -31,7 +31,7 @@ public class Deck {
             cards[i] = "nop";
     }
 
-    public Card draw() {
+    public String draw() {
         if (top == 35) {
             top = 0;
             shuffle();
@@ -44,7 +44,7 @@ public class Deck {
         Random rand = new Random();
         for (int i = 0; i < 35; i++) {
             int randomPos = rand.nextInt(35);
-            Card temp = cards[randomPos];
+            String temp = cards[randomPos];
             cards[randomPos] = cards[i];
             cards[i] = temp;
         }

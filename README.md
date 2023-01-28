@@ -42,8 +42,8 @@ Remark: **We are assuming here you are using a _real_ shell (e.g., anything but 
 |      | F07 | Display win percentage of each player                                               | D      | 01/21/23 | 01/21/23  |
 |      | F08 | Player rerolls based on prioritizing combinations of dice                           | D      | 01/23/23 | 01/24/23  |
 |      | F09 | Player strategies are passed in as command line arguments                           | D      | 01/24/23 | 01/24/23  |
-|      | F10 | Fortune cards: sea battle card                                                      | P      | 01/27/23 |           |
-|      | F11 | Shuffling deck of cards                                                             | D      | 01/27/23 | 01/27/23  |
-|      | F12 | Score bonus points based on drawn fortune card                                      | P      | 01/27/23 |           |
-|      | F13 | Player strategy change based on drawn fortune card                                  | P      | 01/27/23 |           |
+|      | F10 | Fortune cards: sea battle card                                                      | D      | 01/27/23 | 01/28/23  |
+|      | F11 | Shuffling deck of cards                                                             | D      | 01/27/23 | 01/28/23  |
+|      | F12 | Score bonus points based on drawn fortune card                                      | D      | 01/27/23 | 01/28/23  |
+|      | F13 | Player strategy change based on drawn fortune card                                  | D      | 01/27/23 | 01/28/23  |
 
